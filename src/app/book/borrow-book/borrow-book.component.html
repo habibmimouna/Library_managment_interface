@@ -1,0 +1,12 @@
+<div class="borrow-book">
+    <h2>Borrow a Book</h2>
+    <form (submit)="borrowBook()">
+        <label for="bookId">Book ID:</label>
+        <input type="text" id="bookId" name="bookId" [(ngModel)]="bookId">
+        <br>
+        <label for="userId">User ID:</label>
+        <input type="text" id="userId" name="userId" [(ngModel)]="userId">
+        <br>
+        <button type="submit">Borrow Book</button>
+    </form>
+</div>
