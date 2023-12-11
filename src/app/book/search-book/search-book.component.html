@@ -1,4 +1,19 @@
+<div class="container">
+<app-navbar></app-navbar>
+
 <div class="book-search">
+    <div class="search">
     <input type="text" [(ngModel)]="searchTerm" placeholder="Search books...">
     <button (click)="searchBooks()">Search</button>
+</div>
+    <div class="filter">
+        <h2>Search by :</h2>
+        <li>
+            <ul>Categorie</ul>
+            <ul>Author</ul>
+            <ul>Title</ul>
+        </li>
+
+    </div>
+</div>
 </div>

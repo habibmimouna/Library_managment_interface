@@ -16,6 +16,10 @@ body {
     height: 9vh;
 }
 
+.logo {
+    cursor: pointer;
+}
+
 .menu-container {
     display: flex;
     justify-content: space-between;
@@ -45,4 +49,3 @@ body {
 .navbar h1 {
     font-weight: 500;
 }
-
