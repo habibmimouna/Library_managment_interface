@@ -8,19 +8,12 @@
     padding-right: 15px;
     border: rgba(255, 254, 254, 1);
     border-left: none;
-    
-
-    
-    
-    
-    
    
 }
 
 .navbar {
-    height: 40px;
+    height: 8vh;
     color: #FF3F00;
-    
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -34,6 +27,7 @@
 .menu-container {
     display: flex;
     justify-content: space-between;
+   
     
 }
 
@@ -41,7 +35,7 @@
     background-color: #FFFFFC;
     font-size: 3vh;
     cursor: pointer;
-    border-radius: 20px;
+    border-radius: 3vh;
     width: 24vh;
     height: 4vh;
     display: flex;
@@ -59,4 +53,23 @@
 
 .navbar h1 {
     font-weight: 500;
+}
+@media  screen and (max-width: 1000px) {
+    .menu-item{
+        width: 10vh;
+        height: 3vh;
+        font-size: 11px;
+    }
+}
+@media  screen and (max-width: 400px) {
+    .logo{
+        display:flex;
+        align-items: center;
+        
+    }
+    .menu-item{
+        width: 8vh;
+        height: 3vh;
+        font-size: 11px;
+    }
 }
