@@ -1,20 +1,3 @@
-body {
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #FFFFFC;
-    color: #333;
-}
-
-.navbar {
-    background-color: #fffffd;
-    color: #FF3F00;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0px 0px 3px rgba(128, 124, 124, 0.1);
-    height: 9vh;
-}
 
 .menu-container {
     display: flex;
@@ -23,7 +6,7 @@ body {
 }
 
 .menu-item {
-    background-color: #FFFFFC;
+   
     font-size: 3vh;
     cursor: pointer;
     border-radius: 20px;
@@ -53,10 +36,12 @@ body {
     padding-bottom: 20px;
 
 
+
 }
 
 .img-container img {
     border-radius: 8px;
+    box-shadow: #f2efefc2;
 }
 
 .recent-adds-section{

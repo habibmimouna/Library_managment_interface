@@ -1,19 +1,28 @@
-<div class="container">
-<app-navbar></app-navbar>
 
-<div class="book-search">
+<div class="container">
+  
+  <app-navbar></app-navbar>
+  
+  <div class="book-search">
     <div class="search">
-    <input type="text" [(ngModel)]="searchTerm" placeholder="Search books...">
-    <button (click)="searchBooks()">Search</button>
-</div>
-    <div class="filter">
-        <h2>Search by :</h2>
-        <li>
-            <ul>Categorie</ul>
-            <ul>Author</ul>
-            <ul>Title</ul>
-        </li>
+      <select [(ngModel)]="selectedOption" class="">
+        <option value="" disabled selected>Filter by</option>
+        <option *ngFor="let option of options" [value]="option.value" class="filter-option">
+          {{ option.label }}
+        </option>
+      </select>
+      <input
+        type="text"
+        [(ngModel)]="searchTerm"
+        placeholder="Search books..."
+      />
+      <button (click)="searchBooks()">Search</button>
+    </div>
+  </div>
+  <div class="book-list" >
+    <div>
 
     </div>
-</div>
+
+  </div>
 </div>

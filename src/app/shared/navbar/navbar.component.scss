@@ -1,19 +1,30 @@
-body {
+
+.dashboard-container {
     font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #FFFFFC;
-    color: #333;
+    background-color: rgba(255, 254, 254, 0.63);
+    margin-top: 20px;
+    border-radius: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border: rgba(255, 254, 254, 1);
+    border-left: none;
+    
+
+    
+    
+    
+    
+   
 }
 
 .navbar {
-    background-color: #fffffd;
+    height: 40px;
     color: #FF3F00;
+    
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    box-shadow: 0px 0px 3px rgba(128, 124, 124, 0.1);
-    height: 9vh;
+    justify-content: space-between;
+    
 }
 
 .logo {
@@ -23,7 +34,7 @@ body {
 .menu-container {
     display: flex;
     justify-content: space-between;
-    padding: 10px;
+    
 }
 
 .menu-item {
@@ -37,7 +48,7 @@ body {
     justify-content: center;
     align-items: center;
     margin-right: 12px;
-    box-shadow: 0px 0px 3px 3px rgba(128, 124, 124, 0.1);
+    box-shadow: 0px 0px 3px 3px rgba(87, 87, 87, 0.289);
     transition-timing-function: ease-in-out;
     transition-duration: 0.1s;
 }

@@ -7,6 +7,16 @@ import { Component } from '@angular/core';
   styleUrl: './search-book.component.scss'
 })
 export class SearchBookComponent {
+  
+  options = [
+    { label: 'Categorie', value: '1' },
+    { label: 'Author', value: '2' },
+    { label: 'Title', value: '3' },
+    
+  ];
+
+   selectedOption: string ='';
+
   searchTerm: string = '';
 
   searchBooks() {
