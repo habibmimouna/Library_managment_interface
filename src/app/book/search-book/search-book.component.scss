@@ -1,5 +1,4 @@
 .container {
-    position: fixed;
     left: 0;
     right: 0;
     z-index: 9999;
@@ -85,10 +84,27 @@
 }
 
 .book-list {
-    padding: 20vh;
-    border: black;
-    border-top: 1px solid;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     margin-left: 50px;
     margin-right: 50px;
     color: #FF3F00;
+    border-top: 1px solid;
+}
+
+.item-book {
+    background-color: rgba(255, 254, 254, 0.63);
+    border-radius: 4px;
+    margin: 4vh;
+    width: calc(20% - 8vh);
+    height: 45vh;
+    text-align: center;
+}
+
+
+@media (max-width: 768px) {
+    .item-book {
+        width: calc(50% - 8vh); 
+    }
 }

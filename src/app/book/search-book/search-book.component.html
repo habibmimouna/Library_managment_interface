@@ -6,11 +6,12 @@
   <div class="book-search">
     <div class="search">
       <select [(ngModel)]="selectedOption" class="">
-        <option value="" disabled selected>Filter by</option>
-        <option *ngFor="let option of options" [value]="option.value" class="filter-option">
-          {{ option.label }}
+        <option value="" disabled selected>Categorie</option>
+        <option *ngFor="let category of categories" [value]="category.id" class="filter-option">
+          {{ category.nom }}
         </option>
       </select>
+
       <input
         type="text"
         [(ngModel)]="searchTerm"
@@ -19,9 +20,12 @@
       <button (click)="searchBooks()">Search</button>
     </div>
   </div>
-  <div class="book-list" >
-    <div>
-
+  <div class="book-list"   >
+    <div class="item-book" *ngFor="let book of books">
+      <img>
+      <h3>{{ book.titre }}</h3>
+      <h6>{{ book.auteur }}</h6>
+      <h6>{{ book.datePublication }}</h6>
     </div>
 
   </div>

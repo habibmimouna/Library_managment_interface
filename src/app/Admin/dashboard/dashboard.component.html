@@ -1,0 +1,95 @@
+<div class="container">
+  <app-navbar></app-navbar>
+  <div class="dashboard-container">
+    <h5>Hello Admin !</h5>
+    <div class="admin-dashboard">
+      <div class="admin-user-list">
+        <div class="user-list-header">
+          <h6>Users :</h6>
+          <img
+            src="../../../assets/add-book.svg"
+            routerLink="/admin/add-user"
+          />
+        </div>
+        <div *ngFor="let user of users" class="user"></div>
+      </div>
+      <div class="admin-book-list">
+        <div class="book-list-header">
+          <h6>Books :</h6>
+          <img
+            src="../../../assets/add-book.svg"
+            routerLink="/admin/add-book"
+          />
+        </div>
+        <div *ngFor="let book of books" class="book">
+          <div class="item">
+            <div class="attributs">
+              <p>{{ book.id }}</p>
+              <p>{{ book.titre }}</p>
+              <p>{{ book.auteur }}</p>
+            </div>
+            <div class="edit-item">
+              <img
+                src="../../../assets/edit.svg"
+                routerLink="/admin/add-book"
+                width="20px"
+              />
+              <img
+                src="../../../assets/delete.svg"
+                routerLink="/admin/add-book"
+                width="20px"
+              />
+            </div>
+          </div>
+          <div class="book-settings"></div>
+        </div>
+      </div>
+      <div class="admin-category-list">
+        <div class="category-list-header">
+          <h6>Categories :</h6>
+          <img
+            src="../../../assets/add-book.svg"
+            (click)="toggleModal()"
+          />
+        </div>
+        <div *ngFor="let category of categories" class="category">
+          <div class="item">
+            <div class="attributs">
+              <p>{{ category.id }}</p>
+              <p>{{ category.nom }}</p>
+            </div>
+            <div class="edit-item">
+              <img
+                src="../../../assets/edit.svg"
+                routerLink="/admin/add-book"
+                width="20px"
+              />
+              <img
+                src="../../../assets/delete.svg"
+                routerLink="/admin/add-book"
+                width="20px"
+              />
+            </div>
+          </div>
+          <div class="book-settings"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal" [class.show-modal]="showModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5>Add Category</h5>
+        <span class="close-button" (click)="toggleModal()">&times;</span>
+      </div>
+      <div class="modal-body">
+        <label for="category-name">Category Name:</label>
+        <input type="text" id="category-name" [(ngModel)]="newCategoryName">
+      </div>
+      <div class="modal-footer">
+        <button (click)="addCategory()">Add</button>
+        <button (click)="toggleModal()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

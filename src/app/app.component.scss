@@ -2,6 +2,7 @@
     background-image: url("../assets/background.jpeg");
     filter: blur(5px);
     -webkit-filter: blur(5px);
+    background-attachment: fixed;
     height: 100%;
     width: 100%;
     position: fixed;
@@ -11,8 +12,9 @@
     display: block;
 }
 .container{
-    position: fixed;
+    position: relative;
     left: 0;
     right: 0;
     z-index: 9999;
+    position: relative;
 }

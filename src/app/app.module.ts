@@ -10,6 +10,11 @@ import { SearchBookComponent } from './book/search-book/search-book.component';
 import { AccountComponent } from './User/account/account.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { HttpClientModule } from '@angular/common/http';
+import { DashboardComponent } from './Admin/dashboard/dashboard.component';
+import { AddBookComponent } from './book/add-book/add-book.component';
+import { AddUserComponent } from './Admin/add-user/add-user.component';
+
 
 @NgModule({
   declarations: [
@@ -20,13 +25,17 @@ import { FooterComponent } from './shared/footer/footer.component';
     SearchBookComponent,
     AccountComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    DashboardComponent,
+    AddBookComponent,
+    AddUserComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

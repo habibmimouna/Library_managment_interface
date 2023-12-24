@@ -12,16 +12,37 @@
     
 
 }
-.info{
-  
-}
+
 .profile{
-    display: block;
-    align-items: center;
-    border-right: 2px black solid;
-    padding: 5vh;
+    
+    border-right: 2px grey solid;
+    padding-left: 2vh;
+    padding-right: 6vh;
     
 }
-.profile img{
+
+.profile-img{
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.profile-img img{
     width: 20vh;
+    
+}
+.profile-label{
+    
+    border-top: 2px grey solid;
+    padding-top: 1vh;
+    margin-left: 20px;
+    
+}
+.profile-label a{
+    font-size: 18px;
+}
+.profile-label p{
+    font-size: 12px;
 }

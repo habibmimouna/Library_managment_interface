@@ -32,6 +32,13 @@ export class LoginComponent implements OnInit {
       ) {
         localStorage.setItem('token', 'kjkj1258');
         this.router.navigate(['user/Dashboard']);
+      }else
+      if (
+        this.loginForm.value.email == 'Admin@gmail.com' &&
+        this.loginForm.value.password == 'Admin1111'
+      ) {
+        localStorage.setItem('token', 'kjkj1258');
+        this.router.navigate(['admin/Dashboard']);
       } else {
         alert('password invalid');
       }

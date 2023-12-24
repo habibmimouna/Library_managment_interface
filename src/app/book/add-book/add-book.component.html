@@ -1,0 +1,71 @@
+<div class="container">
+  <app-navbar></app-navbar>
+  <div class="dashboard-container">
+    <div class="add-book-header">
+      <div class="back-button" (click)="backfunction()">
+        <img src="../../../assets/back-arrow.svg" />
+        <div class="back">Back</div>
+      </div>
+      <h5>Hello Admin!</h5>
+    </div>
+    <h4>Add a book !</h4>
+    <form (ngSubmit)="onSubmit()">
+      <div class="admin-dashboard">
+        <div class="col-1">
+          <div class="input-group">
+            <label for="book-title">Title</label>
+            <input
+              type="text"
+              id="book-title"
+              [(ngModel)]="book.titre"
+              name="title" 
+            />
+          </div>
+          <div class="input-group">
+            <label for="book-author">Author</label>
+            <input
+              type="text"
+              id="book-author"
+              [(ngModel)]="book.auteur"
+              name="author" 
+            />
+          </div>
+          <div class="input-group">
+            <label for="book-publication-date">Publication Date</label>
+            <input
+              type="date"
+              id="book-publication-date"
+              [(ngModel)]="book.datePublication"
+              name="publicationDate" 
+            />
+          </div>
+          <div class="input-group">
+            <label for="book-isbn">ISBN</label>
+            <input
+              type="text"
+              id="book-isbn"
+              [(ngModel)]="book.isbn"
+              name="isbn" 
+            />
+          </div>
+        </div>
+        <div class="col-2">
+          <label for="book-categorie">Choose categories</label>
+          <select [(ngModel)]="selectedCategories" name="categories" multiple class=""> 
+            <option value="" disabled>Category</option>
+            <option
+              *ngFor="let category of categories"
+              [value]="category.id"
+              class="filter-option"
+            >
+              {{ category.nom }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="submit-button-container">
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>

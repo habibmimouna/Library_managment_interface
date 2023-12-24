@@ -1,0 +1,86 @@
+<div class="container">
+  <app-navbar></app-navbar>
+  <div class="dashboard-container">
+    <div class="add-book-header">
+      <div class="back-button" (click)="backfunction()">
+        <img src="../../../assets/back-arrow.svg" />
+        <div class="back">Back</div>
+      </div>
+      <h5>Hello Admin!</h5>
+    </div>
+    <h4>Add User !</h4>
+    <form (ngSubmit)="onSubmit()">
+      <div class="admin-dashboard">
+        <div class="col-1">
+          <div class="input-group">
+            <label for="email">E-mail</label>
+            <input
+              type="text"
+              id="email"
+              [(ngModel)]="user.email"
+              name="email"
+            />
+          </div>
+          <div class="input-group">
+            <label for="username">Username</label>
+            <input
+              type="text"
+              id="username"
+              [(ngModel)]="user.username"
+              name="username"
+            />
+          </div>
+
+          <div class="input-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="Password"
+              [(ngModel)]="user.password"
+              name="password"
+            />
+          </div>
+        </div>
+        <div class="col-2">
+          <div class="input-group">
+            <label for="adress">Adress</label>
+            <input
+              type="text"
+              id="adress"
+              [(ngModel)]="user.adress"
+              name="adress"
+            />
+          </div>
+          <div class="input-group">
+            <label for="book-isbn">Library card</label>
+            <input
+              type="text"
+              id="book-isbn"
+              [(ngModel)]="user.libraryCard"
+              name="isbn"
+            />
+          </div>
+          <div class="input-group">
+            <label for="phone">Phone</label>
+            <input
+              type="text"
+              id="phone"
+              [(ngModel)]="user.phone"
+              name="phone"
+            />
+          </div>
+          <div class="input-group">
+            <label for="role">Role</label>
+            <select id="role" [(ngModel)]="user.role" name="role">
+              <option value="1">Admin</option>
+              <option value="2">Client</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="submit-button-container">
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
