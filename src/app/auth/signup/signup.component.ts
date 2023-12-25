@@ -14,8 +14,8 @@ import { FormsModule } from '@angular/forms';
 export class SignupComponent {
   user: User = {
     id: null,
-    adress: '',
-    role: '',
+    adresse: '',
+    role: 1,
     username: '',
     email: '',
     password: '',
@@ -31,7 +31,7 @@ export class SignupComponent {
         
       },
       (error) => {
-        console.error('Error adding book:', error);
+        console.error('Error adding user:', error);
       }
     );
   }

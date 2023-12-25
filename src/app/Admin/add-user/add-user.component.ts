@@ -11,8 +11,8 @@ import { User } from '../../User/user';
 export class AddUserComponent {
   user: User = {
     id: null,
-    adress: '',
-    role: '',
+    adresse: '',
+    role: 1,
     username: '',
     email: '',
     password: '',
@@ -40,8 +40,8 @@ export class AddUserComponent {
   private resetForm() {
     this.user = {
       id: null,
-      adress: '',
-      role: '',
+      adresse: '',
+      role: 1,
       username: '',
       email: '',
       password: '',

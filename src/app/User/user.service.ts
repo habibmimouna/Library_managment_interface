@@ -1,16 +1,28 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import {User} from './user';
+import { Observable, map } from 'rxjs';
+import { User } from './user';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
+  users: User[] = [];
+  user: User = {
+    id: null,
+    adresse: '',
+    role: 1,
+    username: '',
+    email: '',
+    password: '',
+    libraryCard: '',
+    phone: '',
+  };
   private baseURL = 'http://localhost:8081/api/v1/user';
+  private readonly USER_KEY = 'currentUser';
 
   constructor(private httpClient: HttpClient) {}
-  
+
   getUsersList(): Observable<User[]> {
     return this.httpClient.get<User[]>(`${this.baseURL}`);
   }
@@ -25,5 +37,24 @@ export class UserService {
 
   updateUser(id: number, user: User): Observable<Object> {
     return this.httpClient.put(`${this.baseURL}/${id}`, user);
+  }
+  getUserByEmail(email: string): Observable<User | undefined> {
+    return this.getUsersList().pipe(
+      map((users) => users.find((user) => user.email === email))
+    );
+  }
+
+  setCurrentUser(user: User): void {
+    localStorage.setItem(this.USER_KEY, JSON.stringify(user));
+  }
+
+  getCurrentUser(): User | null {
+    const userJson = localStorage.getItem(this.USER_KEY);
+    if (userJson) {
+      console.log(JSON.parse(userJson));
+
+      return JSON.parse(userJson);
+    }
+    return null;
   }
 }

@@ -1,10 +1,10 @@
 export interface User {
     id: number|null ;
     libraryCard:string;
-    adress: string ;
+    adresse: string ;
     email: string ;
     password:string;
     phone:string;
     username:string;
-    role:string;
+    role:number;
 }

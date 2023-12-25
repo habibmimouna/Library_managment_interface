@@ -1,49 +1,41 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
+import { UserService } from '../../User/user.service';
+import { User } from '../../User/user';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss',
+  styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
-  loginForm: FormGroup;
+export class LoginComponent {
+  email: string = '';
+  password: string = '';
+  errorMessage: string = '';
+ 
 
-  constructor(private formBuilder: FormBuilder, private router: Router) {
-    this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-    });
-  }
+  constructor(private authService: AuthService, private router: Router,private userService:UserService) {}
 
-  ngOnInit() {
-    console.log('init');
-  }
-
-  onSubmit(): void {
-    console.log(this.loginForm);
-    if (this.loginForm.valid) {
-      console.log('Login form submitted');
-      console.log(this.loginForm.value);
-      if (
-        this.loginForm.value.email == 'khalil@gmail.com' &&
-        this.loginForm.value.password == '123456789'
-      ) {
-        localStorage.setItem('token', 'kjkj1258');
-        this.router.navigate(['user/Dashboard']);
-      }else
-      if (
-        this.loginForm.value.email == 'Admin@gmail.com' &&
-        this.loginForm.value.password == 'Admin1111'
-      ) {
-        localStorage.setItem('token', 'kjkj1258');
-        this.router.navigate(['admin/Dashboard']);
-      } else {
-        alert('password invalid');
+  onSubmit() {
+    this.authService.login(this.email, this.password).subscribe(
+      data => {
+        console.log('Login successful');
+       
+        this.userService.getUserByEmail(this.email).subscribe(user => {
+          if (user) {
+            console.log('Fetched user:', user);
+            this.userService.setCurrentUser(user); 
+          }
+        });
+        this.router.navigate(['user/Dashboard']); 
+      },
+      error => {
+        console.error('Login failed', error);
+        this.errorMessage = 'Login failed. Please check your credentials.';
       }
-    } else {
-      return console.log('error');
-    }
+    );
   }
+
+  
 }

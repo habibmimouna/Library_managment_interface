@@ -5,11 +5,11 @@
   <div class="inputs">
     <div class="col-1">
       <div class="input-group">
-        <label for="email">E-mail</label>
+        <label for="email" id="email">E-mail</label>
         <input type="text" id="email" [(ngModel)]="user.email" name="email" />
       </div>
       <div class="input-group">
-        <label for="username">Username</label>
+        <label for="username" id="username">Username</label>
         <input
           type="text"
           id="username"
@@ -34,29 +34,14 @@
         <input
           type="text"
           id="adress"
-          [(ngModel)]="user.adress"
+          [(ngModel)]="user.adresse"
           name="adress"
         />
       </div>
+      
       <div class="input-group">
-        <label for="book-isbn">Library card</label>
-        <input
-          type="text"
-          id="book-isbn"
-          [(ngModel)]="user.libraryCard"
-          name="isbn"
-        />
-      </div>
-      <div class="input-group">
-        <label for="phone">Phone</label>
-        <input type="text" id="phone" [(ngModel)]="user.phone" name="phone" />
-      </div>
-      <div class="select-group">
-        <label for="role">Role</label>
-        <select id="role" [(ngModel)]="user.role" name="role">
-          <option value="1">Admin</option>
-          <option value="2">Client</option>
-        </select>
+        <label for="numéroTel">Phone</label>
+        <input type="text" id="numéroTel" [(ngModel)]="user.phone" name="numéroTel" />
       </div>
     </div>
   </div>
