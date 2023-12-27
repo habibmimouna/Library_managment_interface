@@ -14,13 +14,14 @@ import { Category } from '../../book/categorie';
 export class DashboardComponent {
   books: Book[] = [];
   categories: Category[] = [];
-  category : Category={
-    id: null, 
+  category: Category = {
+    id: '',
     nom: '',
-
   };
   users: User[] = [];
   showModal: boolean = false;
+  showEditModal: boolean = false;
+  editingCategory: Category | null = null;
   newCategoryName: string = '';
   constructor(
     private Bookservice: BookService,
@@ -39,20 +40,70 @@ export class DashboardComponent {
       this.users = data;
     });
   }
+  onDeleteCategory(id: string) {
+    const isConfirmed = confirm(
+      'Are you sure you want to delete this category?'
+    );
+    if (isConfirmed) {
+      this.CategoryServise.deleteCategory(id).subscribe(
+        (response) => {
+          console.log('Category deleted successfully', response);
+
+          // Handle successful deletion (e.g., update the UI)
+        },
+        (error) => {
+          console.error('Error deleting category', error);
+          // Handle errors here (e.g., show an error message)
+        }
+      );
+      this.reloadPage();
+    }
+  }
+
   toggleModal() {
     this.showModal = !this.showModal;
   }
+  toggleEditModal(category: Category | null) {
+    this.editingCategory = category;
+    this.showEditModal = !this.showEditModal;
+  }
+
   addCategory() {
     if (this.newCategoryName) {
-      this.category.nom=this.newCategoryName
-      this.CategoryServise.createCategory(this.category).subscribe((data)=>{
-        console.log('category added:',data);
-        })
+      this.category.nom = this.newCategoryName;
+      this.CategoryServise.createCategory(this.category).subscribe((data) => {
+        console.log('category added:', data);
+      });
       console.log('Adding category:', this.newCategoryName);
       this.toggleModal();
-      // Reset the input field
       this.newCategoryName = '';
       this.reloadPage();
+    }
+  }
+  updateCategory() {
+    if (this.editingCategory) {
+      this.CategoryServise.updateCategory(
+        this.editingCategory.id,
+        this.editingCategory
+      ).subscribe(
+        (response) => {
+          console.log('Category updated successfully', response);
+          this.toggleEditModal(null);
+        },
+        (error) => {
+          console.error('Error updating category', error);
+          
+        }
+      );
+    }
+  }
+  get editingCategoryName(): string {
+    return this.editingCategory ? this.editingCategory.nom : '';
+  }
+
+  set editingCategoryName(value: string) {
+    if (this.editingCategory) {
+      this.editingCategory.nom = value;
     }
   }
   reloadPage(): void {

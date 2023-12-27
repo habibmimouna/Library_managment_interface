@@ -12,7 +12,7 @@ export class AccountComponent implements OnInit {
   user: User = {
     id: null,
     adresse: '',
-    role: 1,
+    role: 'USER',
     username: '',
     email: '',
     password: '',

@@ -12,7 +12,7 @@ export class AddUserComponent {
   user: User = {
     id: null,
     adresse: '',
-    role: 1,
+    role: 'USER',
     username: '',
     email: '',
     password: '',
@@ -41,7 +41,7 @@ export class AddUserComponent {
     this.user = {
       id: null,
       adresse: '',
-      role: 1,
+      role: 'USER',
       username: '',
       email: '',
       password: '',

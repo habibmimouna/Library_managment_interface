@@ -61,13 +61,13 @@
             <div class="edit-item">
               <img
                 src="../../../assets/edit.svg"
-                routerLink="/admin/add-book"
                 width="20px"
+                (click)="toggleEditModal(category)"
               />
               <img
                 src="../../../assets/delete.svg"
-                routerLink="/admin/add-book"
                 width="20px"
+                (click)="onDeleteCategory(category.id)"
               />
             </div>
           </div>
@@ -89,6 +89,22 @@
       <div class="modal-footer">
         <button (click)="addCategory()">Add</button>
         <button (click)="toggleModal()">Cancel</button>
+      </div>
+    </div>
+  </div>
+  <div class="modal" [class.show-modal]="showEditModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5>Edit Category</h5>
+        <span class="close-button" (click)="toggleEditModal(null)">&times;</span>
+      </div>
+      <div class="modal-body">
+        <label for="edit-category-name">Category Name:</label>
+        <input type="text" id="edit-category-name" [(ngModel)]="editingCategoryName">
+      </div>
+      <div class="modal-footer">
+        <button (click)="updateCategory()">Save</button>
+        <button (click)="toggleEditModal(null)">Cancel</button>
       </div>
     </div>
   </div>

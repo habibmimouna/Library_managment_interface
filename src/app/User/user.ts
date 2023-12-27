@@ -6,5 +6,5 @@ export interface User {
     password:string;
     phone:string;
     username:string;
-    role:number;
+    role:string;
 }

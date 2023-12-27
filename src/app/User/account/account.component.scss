@@ -7,42 +7,11 @@
     border: rgba(255, 254, 254, 1);
     border-radius: 15px;
     height: 80vh;
-    display:flex;
-    
+   
     
 
-}
-
-.profile{
-    
-    border-right: 2px grey solid;
-    padding-left: 2vh;
-    padding-right: 6vh;
-    
-}
-
-.profile-img{
-    
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
 }
 
 .profile-img img{
-    width: 20vh;
-    
-}
-.profile-label{
-    
-    border-top: 2px grey solid;
-    padding-top: 1vh;
-    margin-left: 20px;
-    
-}
-.profile-label a{
-    font-size: 18px;
-}
-.profile-label p{
-    font-size: 12px;
+    width: 110px;
 }

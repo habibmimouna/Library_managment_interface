@@ -17,4 +17,11 @@ export class CategorieService {
   createCategory(category: Category): Observable<Object> {
     return this.httpClient.post(`${this.baseURL}`, category);
   }
+  deleteCategory(id: string): Observable<Object> {
+    return this.httpClient.delete(`${this.baseURL}/${id}`);
+  }
+  updateCategory(id: string, category:Category): Observable<Object> {
+    return this.httpClient.put(`${this.baseURL}/${id}`, category);
+  }
+  
 }

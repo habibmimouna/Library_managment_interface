@@ -15,7 +15,7 @@ export class SignupComponent {
   user: User = {
     id: null,
     adresse: '',
-    role: 1,
+    role: 'USER',
     username: '',
     email: '',
     password: '',
