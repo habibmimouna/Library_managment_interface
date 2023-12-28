@@ -10,7 +10,7 @@ import { User } from '../../User/user';
 })
 export class AddUserComponent {
   user: User = {
-    id: null,
+    id: '',
     adresse: '',
     role: 'USER',
     username: '',
@@ -39,7 +39,7 @@ export class AddUserComponent {
   }
   private resetForm() {
     this.user = {
-      id: null,
+      id: '',
       adresse: '',
       role: 'USER',
       username: '',

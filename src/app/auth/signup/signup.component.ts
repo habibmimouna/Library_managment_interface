@@ -13,7 +13,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class SignupComponent {
   user: User = {
-    id: null,
+    id: '',
     adresse: '',
     role: 'USER',
     username: '',

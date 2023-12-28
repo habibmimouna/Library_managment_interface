@@ -14,7 +14,7 @@ export class AddBookComponent {
   categories: Category[] = []; 
   selectedCategories: string[] = []; 
   book: Book = {
-    id: null, 
+    id: '', 
     titre: '',
     auteur: '',
     datePublication: '',
@@ -55,7 +55,7 @@ export class AddBookComponent {
 
   private resetForm() {
     this.book = {
-      id: null, 
+      id: '', 
       titre: '',
       auteur: '',
       datePublication: '',

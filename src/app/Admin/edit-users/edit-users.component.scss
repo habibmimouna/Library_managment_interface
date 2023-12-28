@@ -1,0 +1,84 @@
+.dashboard-container {
+    margin-top: 6vh;
+    padding: 10px;
+    padding-bottom: 40px;
+    background-color: rgba(255, 254, 254, 0.63);
+    border: rgba(255, 254, 254, 1);
+    border-radius: 15px;
+}
+
+.dashboard-container h5 {
+    border-bottom: 2px solid gray;
+    padding-bottom: 1vh;
+    text-align: center;
+}
+
+.admin-dashboard {
+    padding-left: 5vh;
+    padding-right: 5vh;
+    display: flex;
+}
+
+.admin-user-list {
+    width: 100%;
+    padding-right: 5vh;
+   
+}
+.attributs {
+    display: flex;
+    gap: 8px;
+}
+.item {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.user-list-header img {
+    cursor: pointer;
+}
+
+.user-list-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.show-modal {
+    display: block;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+    border-radius: 5px;
+}
+
+.modal-header, .modal-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.close-button {
+    cursor: pointer;
+}
+
+.modal-body {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

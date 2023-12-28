@@ -31,12 +31,12 @@
             <div class="edit-item">
               <img
                 src="../../../assets/edit.svg"
-                routerLink="/admin/add-book"
+                routerLink="/admin/edit-book"
                 width="20px"
               />
               <img
                 src="../../../assets/delete.svg"
-                routerLink="/admin/add-book"
+                (click)="onDeleteBook(book.id)"
                 width="20px"
               />
             </div>

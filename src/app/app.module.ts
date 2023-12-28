@@ -14,6 +14,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './Admin/dashboard/dashboard.component';
 import { AddBookComponent } from './book/add-book/add-book.component';
 import { AddUserComponent } from './Admin/add-user/add-user.component';
+import { EditBookCategoryComponent } from './Admin/edit-book-category/edit-book-category.component';
+import { EditUsersComponent } from './Admin/edit-users/edit-users.component';
+
 
 
 @NgModule({
@@ -28,7 +31,9 @@ import { AddUserComponent } from './Admin/add-user/add-user.component';
     FooterComponent,
     DashboardComponent,
     AddBookComponent,
-    AddUserComponent
+    AddUserComponent,
+    EditBookCategoryComponent,
+    EditUsersComponent
   ],
   imports: [
     BrowserModule,

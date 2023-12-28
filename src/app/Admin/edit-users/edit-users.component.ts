@@ -7,13 +7,14 @@ import { CategorieService } from '../../book/categorie.service';
 import { Category } from '../../book/categorie';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.scss',
+  selector: 'app-edit-users',
+  templateUrl: './edit-users.component.html',
+  styleUrl: './edit-users.component.scss'
 })
-export class DashboardComponent {
+export class EditUsersComponent {
   books: Book[] = [];
   categories: Category[] = [];
+  users: User[] = [];
   category: Category = {
     id: '',
     nom: '',
@@ -26,7 +27,17 @@ export class DashboardComponent {
     isbn: '',
     categories: [] 
   };
-  users: User[] = [];
+  user: User = {
+    id: '', 
+    username: '',
+    email: '',
+    phone: '',
+    adresse: '',
+    role: '' ,
+    libraryCard:'',
+    password:'',
+  };
+  
   showModal: boolean = false;
   showEditModal: boolean = false;
   editingCategory: Category | null = null;

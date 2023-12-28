@@ -17,5 +17,11 @@ export class BookService {
   createBook(book: Book): Observable<Object> {
     return this.httpClient.post(`${this.baseURL}`, book);
   }
+  deleteBook(id: string): Observable<Object> {
+    return this.httpClient.delete(`${this.baseURL}/${id}`);
+  }
+  updateBook(id: string, book:Book): Observable<Object> {
+    return this.httpClient.put(`${this.baseURL}/${id}`, book);
+  }
 
 }

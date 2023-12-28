@@ -1,5 +1,5 @@
 export interface User {
-    id: number|null ;
+    id:string ;
     libraryCard:string;
     adresse: string ;
     email: string ;

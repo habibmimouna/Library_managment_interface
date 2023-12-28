@@ -2,7 +2,7 @@ import { Category } from "./categorie";
 
 
 export interface Book{
-    id: number|null; 
+    id: string; 
     titre: string;
     auteur:string;
     datePublication:string;

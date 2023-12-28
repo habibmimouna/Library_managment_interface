@@ -1,0 +1,84 @@
+<div class="container">
+  <app-navbar></app-navbar>
+  <div class="dashboard-container">
+    <h5>Users</h5>
+    <div class="admin-dashboard">
+      <div class="admin-user-list">
+        <div class="user-list-header">
+          <h6>Users :</h6>
+          <img
+            src="../../../assets/add-book.svg"
+            routerLink="/admin/add-user"
+          />
+        </div>
+        <div *ngFor="let user of users" class="book">
+          <div class="item">
+            <div class="attributs">
+              <p>{{ user.id }}</p>
+              <p>{{ user.username }}</p>
+              <p>{{ user.email }}</p>
+              <p>{{ user.libraryCard }}</p>
+            </div>
+            <div class="edit-item">
+              <img
+                src="../../../assets/edit.svg"
+                routerLink="/admin/edit-book"
+                width="20px"
+              />
+              <img
+                src="../../../assets/delete.svg"
+                (click)="onDeleteBook(book.id)"
+                width="20px"
+              />
+            </div>
+          </div>
+          <div class="book-settings"></div>
+        </div>
+        <div *ngFor="let user of users" class="user"></div>
+      </div>
+      
+      <div class="modal" [class.show-modal]="showModal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5>Add Category</h5>
+            <span class="close-button" (click)="toggleModal()">&times;</span>
+          </div>
+          <div class="modal-body">
+            <label for="category-name">Category Name:</label>
+            <input
+              type="text"
+              id="category-name"
+              [(ngModel)]="newCategoryName"
+            />
+          </div>
+          <div class="modal-footer">
+            <button (click)="addCategory()">Add</button>
+            <button (click)="toggleModal()">Cancel</button>
+          </div>
+        </div>
+      </div>
+      <div class="modal" [class.show-modal]="showEditModal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5>Edit Category</h5>
+            <span class="close-button" (click)="toggleEditModal(null)"
+              >&times;</span
+            >
+          </div>
+          <div class="modal-body">
+            <label for="edit-category-name">Category Name:</label>
+            <input
+              type="text"
+              id="edit-category-name"
+              [(ngModel)]="editingCategoryName"
+            />
+          </div>
+          <div class="modal-footer">
+            <button (click)="updateCategory()">Save</button>
+            <button (click)="toggleEditModal(null)">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

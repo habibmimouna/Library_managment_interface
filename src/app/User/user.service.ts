@@ -9,7 +9,7 @@ import { User } from './user';
 export class UserService {
   users: User[] = [];
   user: User = {
-    id: null,
+    id: '',
     adresse: '',
     role: 'USER',
     username: '',
@@ -31,11 +31,11 @@ export class UserService {
     return this.httpClient.post(`${this.baseURL}`, user);
   }
 
-  getUserById(id: number): Observable<User> {
+  getUserById(id: string): Observable<User> {
     return this.httpClient.get<User>(`${this.baseURL}/${id}`);
   }
 
-  updateUser(id: number, user: User): Observable<Object> {
+  updateUser(id: string, user: User): Observable<Object> {
     return this.httpClient.put(`${this.baseURL}/${id}`, user);
   }
   getUserByEmail(email: string): Observable<User | undefined> {

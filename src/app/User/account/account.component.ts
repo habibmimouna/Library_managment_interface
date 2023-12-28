@@ -10,7 +10,7 @@ import { UserService } from '../user.service';
 })
 export class AccountComponent implements OnInit {
   user: User = {
-    id: null,
+    id: '',
     adresse: '',
     role: 'USER',
     username: '',
