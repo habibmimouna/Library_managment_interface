@@ -1,0 +1,95 @@
+.dashboard-container {
+    margin-top: 6vh;
+    padding: 10px;
+    padding-bottom: 40px;
+    background-color: rgba(255, 254, 254, 0.63);
+    border-radius: 15px;
+}
+
+.dashboard-container h5 {
+    border-bottom: 2px solid gray;
+    padding-bottom: 1vh;
+    text-align: center;
+}
+
+.admin-dashboard {
+    padding-left: 8vh;
+    padding-right: 8vh;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.divider {
+    border-left: 2px solid gray;
+}
+
+.admin-book-list, .admin-category-list {
+    width: 55vh;
+    padding-right: 8vh;
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.edit-item img {
+    cursor: pointer;
+}
+
+.attributs {
+    display: flex;
+}
+
+.attributs p {
+    margin-right: 10px;
+}
+
+.book-list-header, .category-list-header, .user-list-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.book-list-header img, .category-list-header img, .user-list-header img {
+    cursor: pointer;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.show-modal {
+    display: block;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+    border-radius: 5px;
+}
+
+.modal-header, .modal-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.close-button {
+    cursor: pointer;
+}
+
+.modal-body {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
