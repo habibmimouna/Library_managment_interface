@@ -13,43 +13,56 @@
 }
 
 .admin-dashboard {
-    padding-left: 8vh;
-    padding-right: 8vh;
+    padding-left: 4vh;
+    padding-right: 4vh;
     display: flex;
-    justify-content: space-evenly;
+    
 }
 
 .divider {
     border-left: 2px solid gray;
 }
 
-.admin-book-list, .admin-category-list {
-    width: 55vh;
-    padding-right: 8vh;
+.admin-book-list {
+    width: 100%;
+   
+}
+.admin-category-list {
+    
+   
 }
 
-.item {
+.category {
     display: flex;
     justify-content: space-between;
 }
 
-.edit-item img {
+.category-action img {
     cursor: pointer;
 }
-
-.attributs {
+.book-action{
     display: flex;
+    min-width: 100px;
+    text-align: center;
 }
-
-.attributs p {
-    margin-right: 10px;
+.book-action img{
+    cursor:pointer;
 }
-
-.book-list-header, .category-list-header, .user-list-header {
+.book-list-column-headers{
+    min-width:120px;
+ 
+}
+.book-list-header, .category-list-header, .user-list-header,.book {
     display: flex;
     justify-content: space-between;
-}
+    padding-left: 10px;
+    padding-right: 10px;
 
+}
+.user-data{ 
+    text-align: center;
+    
+}
 .book-list-header img, .category-list-header img, .user-list-header img {
     cursor: pointer;
 }
@@ -92,4 +105,25 @@
 .modal-body {
     margin-top: 10px;
     margin-bottom: 10px;
+}
+.book-list-column-headers, .category-list-column-headers {
+    display: flex;
+    justify-content: space-between;
+    
+    
+   
+}
+
+.header-item {
+    min-width:100px;
+    color: rgb(255, 82, 19);
+}
+.user-data{
+    max-width:100px;
+
+}
+.header-item, .user-data, .user-actions{
+    flex: 1;
+    text-align: center;
+    
 }

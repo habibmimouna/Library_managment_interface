@@ -1,8 +1,28 @@
 <div>
   <app-navbar></app-navbar>
   <div class="container">
+    <div class="header">Account</div>
     <div class="profile-img">
-      <img src="../../../assets/profile.png">
+      <img src="../../../assets/profile.png" />
+      <div class="profile-username">
+        <P>Username:</P>
+        <p>{{ user.username }}</p>
+      </div>
+      
+    </div>
+    <div class="profile-credential">
+      <div class="data">
+        <div>Email:</div>
+        <div>{{ user.email }}</div>
+      </div>
+      <div class="data">
+        <div>address:</div>
+        <div>{{ user.adresse }}</div>
+      </div>
+      <div class="data">
+        <div>Library card:</div>
+        <div>{{ user.libraryCard }}</div>
+      </div>
     </div>
   </div>
 </div>

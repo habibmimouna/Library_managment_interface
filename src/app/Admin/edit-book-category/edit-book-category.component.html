@@ -11,59 +11,73 @@
             routerLink="/admin/add-book"
           />
         </div>
+
+        <!-- Book Column Headers -->
+        <div class="book-list-column-headers">
+          <div class="header-item">ID</div>
+          <div class="header-item">Title</div>
+          <div class="header-item">Author</div>
+          <div class="header-item">Actions</div>
+        </div>
+
+        <!-- Book List -->
         <div *ngFor="let book of books" class="book">
-          <div class="item">
-            <div class="attributs">
-              <p>{{ book.id }}</p>
-              <p>{{ book.titre }}</p>
-              <p>{{ book.auteur }}</p>
-            </div>
-            <div class="edit-item">
-              <img
-                src="../../../assets/edit.svg"
-                routerLink="/admin/edit-book"
-                width="20px"
-              />
-              <img
-                src="../../../assets/delete.svg"
-                (click)="onDeleteBook(book.id)"
-                width="20px"
-              />
-            </div>
+          <p class="user-data">{{ book.id }}</p>
+          <p class="user-data">{{ book.titre }}</p>
+          <p class="user-data">{{ book.auteur }}</p>
+
+          <div class="book-action">
+            <img
+              src="../../../assets/edit.svg"
+              routerLink="/admin/edit-book"
+              width="20px"
+            />
+            <img
+              src="../../../assets/delete.svg"
+              (click)="onDeleteBook(book.id)"
+              width="20px"
+            />
           </div>
-          <div class="book-settings"></div>
         </div>
       </div>
+
       <div class="divider"></div>
+
       <div class="admin-category-list">
         <div class="category-list-header">
           <h6>Categories :</h6>
           <img src="../../../assets/add-book.svg" (click)="toggleModal()" />
         </div>
+
+        <!-- Category Column Headers -->
+        <div class="category-list-column-headers">
+          <div class="header-item">ID</div>
+          <div class="header-item">Name</div>
+          <div class="header-item">Actions</div>
+        </div>
+
+        <!-- Category List -->
         <div *ngFor="let category of categories" class="category">
-          <div class="item">
-            <div class="attributs">
-              <p>{{ category.id }}</p>
-              <p>{{ category.nom }}</p>
-            </div>
-            <div class="edit-item">
-              <img
-                src="../../../assets/edit.svg"
-                width="20px"
-                (click)="toggleEditModal(category)"
-              />
-              <img
-                src="../../../assets/delete.svg"
-                width="20px"
-                (click)="onDeleteCategory(category.id)"
-              />
-            </div>
+          <p class="user-data">{{ category.id }}</p>
+          <p class="user-data">{{ category.nom }}</p>
+
+          <div class="category-action">
+            <img
+              src="../../../assets/edit.svg"
+              width="20px"
+              (click)="toggleEditModal(category)"
+            />
+            <img
+              src="../../../assets/delete.svg"
+              width="20px"
+              (click)="onDeleteCategory(category.id)"
+            />
           </div>
-          <div class="book-settings"></div>
         </div>
       </div>
     </div>
   </div>
+
   <div class="modal" [class.show-modal]="showModal">
     <div class="modal-content">
       <div class="modal-header">

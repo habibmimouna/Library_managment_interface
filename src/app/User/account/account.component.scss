@@ -1,17 +1,42 @@
 .container{
     margin-top: 6vh;
     padding: 10px;
-    padding-top: 40px;
+    padding-top: 15px;
     padding-bottom: 40px;
     background-color: rgba(255, 254, 254, 0.63);
     border: rgba(255, 254, 254, 1);
     border-radius: 15px;
     height: 80vh;
-   
-    
-
+   width: 500px;
 }
 
 .profile-img img{
     width: 110px;
+    
+}
+.profile-img{
+    margin-left: 20px;
+    border-bottom: 2px gray solid;
+    width: 220px;
+    
+
+}
+.profile-username{
+    display: flex;
+    gap:5px;
+    margin-left: 10px;
+    
+}
+.profile-credential{
+    margin-left: 30px;
+    margin-bottom:5px;
+    margin-top: 10px;
+}
+.header{
+    color: rgb(251, 86, 26);
+    font-size: 20px;
+    text-align: center;
+}
+.data{
+    
 }

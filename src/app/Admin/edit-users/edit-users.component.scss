@@ -3,7 +3,6 @@
     padding: 10px;
     padding-bottom: 40px;
     background-color: rgba(255, 254, 254, 0.63);
-    border: rgba(255, 254, 254, 1);
     border-radius: 15px;
 }
 
@@ -14,33 +13,44 @@
 }
 
 .admin-dashboard {
-    padding-left: 5vh;
-    padding-right: 5vh;
+    padding: 5vh;
     display: flex;
+    flex-direction: column;
 }
 
 .admin-user-list {
     width: 100%;
-    padding-right: 5vh;
-   
-}
-.attributs {
-    display: flex;
-    gap: 8px;
-}
-.item {
-    display: flex;
-    justify-content: space-between;
-}
-
-
-.user-list-header img {
-    cursor: pointer;
 }
 
 .user-list-header {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.user-list-column-headers, .user-row {
+    display: flex;
+    justify-content: space-between;
+    
+}
+.header-item{
+    color: rgb(255, 82, 19);
+}
+
+.header-item, .user-data, .user-actions{
+    flex: 1;
+    text-align: center;
+    padding: 5px;
+}
+.user-data-email{
+    min-width:210px;
+    flex: 1;
+    text-align: center;
+    padding: 5px;
+}
+
+.user-actions img {
+    cursor: pointer;
 }
 
 .modal {

@@ -40,7 +40,17 @@ export class EditUsersComponent {
   
   showModal: boolean = false;
   showEditModal: boolean = false;
-  editingCategory: Category | null = null;
+  editingUser: User = {
+    id: '', 
+    username: '',
+    email: '',
+    phone: '',
+    adresse: '',
+    role: '' ,
+    libraryCard:'',
+    password:'',
+  };
+ 
   newCategoryName: string = '';
   constructor(
     private Bookservice: BookService,
@@ -59,87 +69,38 @@ export class EditUsersComponent {
       this.users = data;
     });
   }
-  onDeleteBook(id: string) {
+  onDeleteUser(id: string) {
     const isConfirmed = confirm(
-      'Are you sure you want to delete this book?'
+      'Are you sure you want to delete this user?'
     );
     if (isConfirmed) {
-      this.Bookservice.deleteBook(id).subscribe(
+      this.UserService.deleteUser(id).subscribe(
         (response) => {
-          console.log('Book deleted successfully', response);
+          console.log('User deleted successfully', response);
 
         },
         (error) => {
-          console.error('Error deleting book', error);
+          console.error('Error deleting user', error);
          
         }
       );
       this.reloadPage();
     }
   }
-  onDeleteCategory(id: string) {
-    const isConfirmed = confirm(
-      'Are you sure you want to delete this category?'
-    );
-    if (isConfirmed) {
-      this.CategoryServise.deleteCategory(id).subscribe(
-        (response) => {
-          console.log('Category deleted successfully', response);
-        },
-        (error) => {
-          console.error('Error deleting category', error);
+  
+ 
+ 
+  get editingUserName(): string {
+    return this.editingUser ? this.editingUser.username : '';
+  }
 
-        }
-      );
-      this.reloadPage();
+  set editingUserName(value: string) {
+    if (this.editingUser) {
+      this.editingUser.username = value;
     }
   }
 
-  toggleModal() {
-    this.showModal = !this.showModal;
-  }
-  toggleEditModal(category: Category | null) {
-    this.editingCategory = category;
-    this.showEditModal = !this.showEditModal;
-  }
-
-  addCategory() {
-    if (this.newCategoryName) {
-      this.category.nom = this.newCategoryName;
-      this.CategoryServise.createCategory(this.category).subscribe((data) => {
-        console.log('category added:', data);
-      });
-      console.log('Adding category:', this.newCategoryName);
-      this.toggleModal();
-      this.newCategoryName = '';
-      this.reloadPage();
-    }
-  }
-  updateCategory() {
-    if (this.editingCategory) {
-      this.CategoryServise.updateCategory(
-        this.editingCategory.id,
-        this.editingCategory
-      ).subscribe(
-        (response) => {
-          console.log('Category updated successfully', response);
-          this.toggleEditModal(null);
-        },
-        (error) => {
-          console.error('Error updating category', error);
-        }
-      );
-    }
-  }
-  get editingCategoryName(): string {
-    return this.editingCategory ? this.editingCategory.nom : '';
-  }
-
-  set editingCategoryName(value: string) {
-    if (this.editingCategory) {
-      this.editingCategory.nom = value;
-    }
-  }
+  
   reloadPage(): void {
     window.location.reload();
   }

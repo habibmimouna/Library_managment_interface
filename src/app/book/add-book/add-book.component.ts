@@ -31,7 +31,7 @@ export class AddBookComponent {
 
   }
   backfunction(){
-    this.router.navigate(['admin/Dashboard']);
+    this.router.navigate(['admin/edit-book-category']);
 
   }
 
