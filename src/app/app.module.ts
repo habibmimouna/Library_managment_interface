@@ -16,6 +16,7 @@ import { AddBookComponent } from './book/add-book/add-book.component';
 import { AddUserComponent } from './Admin/add-user/add-user.component';
 import { EditBookCategoryComponent } from './Admin/edit-book-category/edit-book-category.component';
 import { EditUsersComponent } from './Admin/edit-users/edit-users.component';
+import { ReservationComponent } from './book/reservation/reservation.component';
 
 
 
@@ -33,7 +34,8 @@ import { EditUsersComponent } from './Admin/edit-users/edit-users.component';
     AddBookComponent,
     AddUserComponent,
     EditBookCategoryComponent,
-    EditUsersComponent
+    EditUsersComponent,
+    ReservationComponent
   ],
   imports: [
     BrowserModule,

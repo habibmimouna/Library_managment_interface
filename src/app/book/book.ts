@@ -1,13 +1,16 @@
 import { Category } from "./categorie";
+import { Reservation } from "./reservation";
 
 
 export interface Book{
-    id: string; 
+    id: number|null; 
     titre: string;
     auteur:string;
     datePublication:string;
     isbn:string;
-    categories:Category[]|null
+    categoryId: number | null;
+    reservations?: Reservation[];
+    
 
 
 }

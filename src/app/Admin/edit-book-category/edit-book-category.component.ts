@@ -9,51 +9,45 @@ import { Category } from '../../book/categorie';
 @Component({
   selector: 'app-edit-book-category',
   templateUrl: './edit-book-category.component.html',
-  styleUrl: './edit-book-category.component.scss'
+  styleUrls: ['./edit-book-category.component.scss']
 })
 export class EditBookCategoryComponent {
   books: Book[] = [];
   categories: Category[] = [];
-  category: Category = {
-    id: '',
-    nom: '',
-  };
-  book: Book = {
-    id: '', 
-    titre: '',
-    auteur: '',
-    datePublication: '',
-    isbn: '',
-    categories: [] 
-  };
   users: User[] = [];
   showModal: boolean = false;
   showEditModal: boolean = false;
   editingCategory: Category | null = null;
   newCategoryName: string = '';
+
   constructor(
-    private Bookservice: BookService,
-    private CategoryServise: CategorieService,
-    private UserService: UserService
+    private bookService: BookService,
+    private categoryService: CategorieService,
+    private userService: UserService
   ) {}
 
   ngOnInit() {
-    this.Bookservice.getBooksList().subscribe((data) => {
+    this.fetchData();
+  }
+
+  fetchData() {
+    this.bookService.getBooksList().subscribe((data) => {
       this.books = data;
     });
-    this.CategoryServise.getCategoriesList().subscribe((data) => {
+    this.categoryService.getCategoriesList().subscribe((data) => {
       this.categories = data;
     });
-    this.UserService.getUsersList().subscribe((data) => {
+    this.userService.getUsersList().subscribe((data) => {
       this.users = data;
     });
   }
-  onDeleteBook(id: string) {
+
+  onDeleteBook(id: number) {
     const isConfirmed = confirm(
       'Are you sure you want to delete this book?'
     );
     if (isConfirmed) {
-      this.Bookservice.deleteBook(id).subscribe(
+      this.bookService.deleteBook(id).subscribe(
         (response) => {
           console.log('Book deleted successfully', response);
 
@@ -66,12 +60,12 @@ export class EditBookCategoryComponent {
       this.reloadPage();
     }
   }
-  onDeleteCategory(id: string) {
+  onDeleteCategory(id: number) {
     const isConfirmed = confirm(
       'Are you sure you want to delete this category?'
     );
     if (isConfirmed) {
-      this.CategoryServise.deleteCategory(id).subscribe(
+      this.categoryService.deleteCategory(id).subscribe(
         (response) => {
           console.log('Category deleted successfully', response);
         },
@@ -87,6 +81,7 @@ export class EditBookCategoryComponent {
   toggleModal() {
     this.showModal = !this.showModal;
   }
+
   toggleEditModal(category: Category | null) {
     this.editingCategory = category;
     this.showEditModal = !this.showEditModal;
@@ -94,25 +89,30 @@ export class EditBookCategoryComponent {
 
   addCategory() {
     if (this.newCategoryName) {
-      this.category.nom = this.newCategoryName;
-      this.CategoryServise.createCategory(this.category).subscribe((data) => {
-        console.log('category added:', data);
+      const newCategory: Category = {
+        id: null, // Assuming id is auto-generated
+        nom: this.newCategoryName,
+      };
+      this.categoryService.createCategory(newCategory).subscribe((data) => {
+        console.log('Category added:', data);
+        this.fetchData(); // Fetch updated data
+        window.location.reload();
       });
       console.log('Adding category:', this.newCategoryName);
       this.toggleModal();
       this.newCategoryName = '';
-      this.reloadPage();
     }
   }
+
   updateCategory() {
-    if (this.editingCategory) {
-      this.CategoryServise.updateCategory(
-        this.editingCategory.id,
-        this.editingCategory
-      ).subscribe(
+    if (this.editingCategory && this.editingCategory.id !==null) {
+      this.categoryService.updateCategory(this.editingCategory.id, this.editingCategory).subscribe(
         (response) => {
           console.log('Category updated successfully', response);
+        
+          this.fetchData(); // Fetch updated data
           this.toggleEditModal(null);
+          window.location.reload();
         },
         (error) => {
           console.error('Error updating category', error);
@@ -120,6 +120,7 @@ export class EditBookCategoryComponent {
       );
     }
   }
+
   get editingCategoryName(): string {
     return this.editingCategory ? this.editingCategory.nom : '';
   }

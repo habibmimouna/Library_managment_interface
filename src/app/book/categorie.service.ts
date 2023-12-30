@@ -17,11 +17,15 @@ export class CategorieService {
   createCategory(category: Category): Observable<Object> {
     return this.httpClient.post(`${this.baseURL}`, category);
   }
-  deleteCategory(id: string): Observable<Object> {
+  deleteCategory(id: number): Observable<Object> {
     return this.httpClient.delete(`${this.baseURL}/${id}`);
   }
-  updateCategory(id: string, category:Category): Observable<Object> {
+  updateCategory(id: number, category:Category): Observable<Object> {
     return this.httpClient.put(`${this.baseURL}/${id}`, category);
   }
+  getCategoryById(id: number): Observable<Category> {
+    return this.httpClient.get<Category>(`${this.baseURL}/${id}`);
+  }
+  
   
 }

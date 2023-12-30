@@ -7,17 +7,6 @@ import { User } from './user';
   providedIn: 'root',
 })
 export class UserService {
-  users: User[] = [];
-  user: User = {
-    id: '',
-    adresse: '',
-    role: 'USER',
-    username: '',
-    email: '',
-    password: '',
-    libraryCard: '',
-    phone: '',
-  };
   private baseURL = 'http://localhost:8081/api/v1/user';
   private readonly USER_KEY = 'currentUser';
 
@@ -30,17 +19,19 @@ export class UserService {
   createUser(user: User): Observable<Object> {
     return this.httpClient.post(`${this.baseURL}`, user);
   }
-  deleteUser(id: string): Observable<Object> {
+
+  deleteUser(id: number): Observable<Object> {
     return this.httpClient.delete(`${this.baseURL}/${id}`);
   }
 
-  getUserById(id: string): Observable<User> {
+  getUserById(id: number): Observable<User> {
     return this.httpClient.get<User>(`${this.baseURL}/${id}`);
   }
 
-  updateUser(id: string, user: User): Observable<Object> {
+  updateUser(id: number, user: User): Observable<Object> {
     return this.httpClient.put(`${this.baseURL}/${id}`, user);
   }
+
   getUserByEmail(email: string): Observable<User | undefined> {
     return this.getUsersList().pipe(
       map((users) => users.find((user) => user.email === email))
@@ -54,8 +45,6 @@ export class UserService {
   getCurrentUser(): User | null {
     const userJson = localStorage.getItem(this.USER_KEY);
     if (userJson) {
-      console.log(JSON.parse(userJson));
-
       return JSON.parse(userJson);
     }
     return null;

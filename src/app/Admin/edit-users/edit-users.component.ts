@@ -9,87 +9,58 @@ import { Category } from '../../book/categorie';
 @Component({
   selector: 'app-edit-users',
   templateUrl: './edit-users.component.html',
-  styleUrl: './edit-users.component.scss'
+  styleUrls: ['./edit-users.component.scss']
 })
 export class EditUsersComponent {
   books: Book[] = [];
   categories: Category[] = [];
   users: User[] = [];
-  category: Category = {
-    id: '',
-    nom: '',
-  };
-  book: Book = {
-    id: '', 
-    titre: '',
-    auteur: '',
-    datePublication: '',
-    isbn: '',
-    categories: [] 
-  };
-  user: User = {
-    id: '', 
-    username: '',
-    email: '',
-    phone: '',
-    adresse: '',
-    role: '' ,
-    libraryCard:'',
-    password:'',
-  };
-  
   showModal: boolean = false;
   showEditModal: boolean = false;
-  editingUser: User = {
-    id: '', 
-    username: '',
-    email: '',
-    phone: '',
-    adresse: '',
-    role: '' ,
-    libraryCard:'',
-    password:'',
-  };
- 
-  newCategoryName: string = '';
+  editingUser: User | null = null;
+
   constructor(
-    private Bookservice: BookService,
-    private CategoryServise: CategorieService,
-    private UserService: UserService
+    private bookService: BookService,
+    private categoryService: CategorieService,
+    private userService: UserService
   ) {}
 
   ngOnInit() {
-    this.Bookservice.getBooksList().subscribe((data) => {
+    this.fetchData();
+  }
+
+  fetchData() {
+    this.bookService.getBooksList().subscribe((data) => {
       this.books = data;
     });
-    this.CategoryServise.getCategoriesList().subscribe((data) => {
+    this.categoryService.getCategoriesList().subscribe((data) => {
       this.categories = data;
     });
-    this.UserService.getUsersList().subscribe((data) => {
+    this.userService.getUsersList().subscribe((data) => {
       this.users = data;
     });
   }
-  onDeleteUser(id: string) {
-    const isConfirmed = confirm(
-      'Are you sure you want to delete this user?'
-    );
+
+  onDeleteUser(id: number) { // Assuming id is a number
+    const isConfirmed = confirm('Are you sure you want to delete this user?');
     if (isConfirmed) {
-      this.UserService.deleteUser(id).subscribe(
+      this.userService.deleteUser(id).subscribe(
         (response) => {
           console.log('User deleted successfully', response);
-
+          this.fetchData(); // Fetch updated data
         },
         (error) => {
           console.error('Error deleting user', error);
-         
         }
       );
-      this.reloadPage();
     }
   }
-  
- 
- 
+
+  toggleEditModal(user: User | null) {
+    this.editingUser = user;
+    this.showEditModal = !this.showEditModal;
+  }
+
   get editingUserName(): string {
     return this.editingUser ? this.editingUser.username : '';
   }
@@ -98,10 +69,5 @@ export class EditUsersComponent {
     if (this.editingUser) {
       this.editingUser.username = value;
     }
-  }
-
-  
-  reloadPage(): void {
-    window.location.reload();
   }
 }

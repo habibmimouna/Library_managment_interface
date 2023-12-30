@@ -29,6 +29,7 @@
             
             <img
               src="../../../assets/delete.svg"
+              *ngIf="user.id !== null"
               (click)="onDeleteUser(user.id)"
               width="20px"
             />

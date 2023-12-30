@@ -17,11 +17,14 @@ export class BookService {
   createBook(book: Book): Observable<Object> {
     return this.httpClient.post(`${this.baseURL}`, book);
   }
-  deleteBook(id: string): Observable<Object> {
+  deleteBook(id: number): Observable<Object> {
     return this.httpClient.delete(`${this.baseURL}/${id}`);
   }
-  updateBook(id: string, book:Book): Observable<Object> {
+  updateBook(id: number, book:Book): Observable<Object> {
     return this.httpClient.put(`${this.baseURL}/${id}`, book);
+  }
+  getBooksByCategory(categoryId: string): Observable<Book[]> {
+    return this.httpClient.get<Book[]>(`http://localhost:8081/api/v1/Livre/by-category/${categoryId}`);
   }
 
 }

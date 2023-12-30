@@ -20,7 +20,7 @@ export class AuthService {
     return this.httpClient.post<{ token: string, user: User }>(this.LoginURL + 'signin', { email, password })
       .pipe(tap(response => {
         console.log('Login response:', response); 
-        if (response.token && response.user) {
+        if (response.token ) {
           localStorage.setItem(this.TOKEN_KEY, response.token);
           localStorage.setItem('userInfo', JSON.stringify(response.user));
           console.log('User info stored:', response.user);

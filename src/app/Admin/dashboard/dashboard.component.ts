@@ -9,84 +9,77 @@ import { Category } from '../../book/categorie';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.scss',
+  styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent {
   books: Book[] = [];
   categories: Category[] = [];
-  category: Category = {
-    id: '',
-    nom: '',
-  };
-  book: Book = {
-    id: '', 
-    titre: '',
-    auteur: '',
-    datePublication: '',
-    isbn: '',
-    categories: [] 
-  };
   users: User[] = [];
   showModal: boolean = false;
   showEditModal: boolean = false;
   editingCategory: Category | null = null;
   newCategoryName: string = '';
+
   constructor(
-    private Bookservice: BookService,
-    private CategoryServise: CategorieService,
-    private UserService: UserService
+    private bookService: BookService,
+    private categoryService: CategorieService,
+    private userService: UserService
   ) {}
 
   ngOnInit() {
-    this.Bookservice.getBooksList().subscribe((data) => {
+    this.fetchData();
+  }
+
+  fetchData() {
+    this.bookService.getBooksList().subscribe((data) => {
       this.books = data;
     });
-    this.CategoryServise.getCategoriesList().subscribe((data) => {
+    this.categoryService.getCategoriesList().subscribe((data) => {
       this.categories = data;
     });
-    this.UserService.getUsersList().subscribe((data) => {
+    this.userService.getUsersList().subscribe((data) => {
       this.users = data;
     });
   }
-  onDeleteBook(id: string) {
-    const isConfirmed = confirm(
-      'Are you sure you want to delete this book?'
-    );
+
+  onDeleteBook(id: number) { // Assuming id is a number
+    const isConfirmed = confirm('Are you sure you want to delete this book?');
     if (isConfirmed) {
-      this.Bookservice.deleteBook(id).subscribe(
+      this.bookService.deleteBook(id).subscribe(
         (response) => {
           console.log('Book deleted successfully', response);
-
+          this.fetchData(); // Fetch updated data
         },
         (error) => {
           console.error('Error deleting book', error);
-         
         }
       );
-      this.reloadPage();
     }
   }
-  onDeleteCategory(id: string) {
-    const isConfirmed = confirm(
-      'Are you sure you want to delete this category?'
-    );
+
+  onDeleteCategory(id: number) { // Assuming id is a number
+    if (id === null) {
+      console.error('Attempted to delete a category with null id');
+      return;
+    }
+    const isConfirmed = confirm('Are you sure you want to delete this category?');
     if (isConfirmed) {
-      this.CategoryServise.deleteCategory(id).subscribe(
+      this.categoryService.deleteCategory(id).subscribe(
         (response) => {
           console.log('Category deleted successfully', response);
+          this.fetchData(); // Fetch updated data
         },
         (error) => {
           console.error('Error deleting category', error);
-
         }
       );
-      this.reloadPage();
     }
   }
 
   toggleModal() {
     this.showModal = !this.showModal;
   }
+
   toggleEditModal(category: Category | null) {
     this.editingCategory = category;
     this.showEditModal = !this.showEditModal;
@@ -94,24 +87,26 @@ export class DashboardComponent {
 
   addCategory() {
     if (this.newCategoryName) {
-      this.category.nom = this.newCategoryName;
-      this.CategoryServise.createCategory(this.category).subscribe((data) => {
-        console.log('category added:', data);
+      const newCategory: Category = {
+        id: null, // Assuming id is auto-generated
+        nom: this.newCategoryName,
+      };
+      this.categoryService.createCategory(newCategory).subscribe((data) => {
+        console.log('Category added:', data);
+        this.fetchData(); // Fetch updated data
       });
       console.log('Adding category:', this.newCategoryName);
       this.toggleModal();
       this.newCategoryName = '';
-      this.reloadPage();
     }
   }
+
   updateCategory() {
-    if (this.editingCategory) {
-      this.CategoryServise.updateCategory(
-        this.editingCategory.id,
-        this.editingCategory
-      ).subscribe(
+    if (this.editingCategory && this.editingCategory.id!==null) {
+      this.categoryService.updateCategory(this.editingCategory.id, this.editingCategory).subscribe(
         (response) => {
           console.log('Category updated successfully', response);
+          this.fetchData(); // Fetch updated data
           this.toggleEditModal(null);
         },
         (error) => {
@@ -120,6 +115,7 @@ export class DashboardComponent {
       );
     }
   }
+
   get editingCategoryName(): string {
     return this.editingCategory ? this.editingCategory.nom : '';
   }
@@ -128,8 +124,5 @@ export class DashboardComponent {
     if (this.editingCategory) {
       this.editingCategory.nom = value;
     }
-  }
-  reloadPage(): void {
-    window.location.reload();
   }
 }

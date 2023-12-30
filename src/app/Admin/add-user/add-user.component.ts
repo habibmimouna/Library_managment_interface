@@ -6,18 +6,18 @@ import { User } from '../../User/user';
 @Component({
   selector: 'app-add-user',
   templateUrl: './add-user.component.html',
-  styleUrl: './add-user.component.scss',
+  styleUrls: ['./add-user.component.scss'], // Note: 'styleUrls' instead of 'styleUrl'
 })
 export class AddUserComponent {
   user: User = {
-    id: '',
+    id: null, 
     adresse: '',
     role: 'USER',
     username: '',
     email: '',
     password: '',
     libraryCard: '',
-    phone: '',
+    phone: '', // Assuming phone should be a number, initialize with null or a valid number
   };
 
   constructor(private userService: UserService, private router: Router) {}
@@ -29,17 +29,18 @@ export class AddUserComponent {
   onSubmit() {
     this.userService.createUser(this.user).subscribe(
       (data) => {
-        console.log('Book added:', data);
+        console.log('User added:', data);
         this.resetForm();
       },
       (error) => {
-        console.error('Error adding book:', error);
+        console.error('Error adding user:', error);
       }
     );
   }
+
   private resetForm() {
     this.user = {
-      id: '',
+      id: null,
       adresse: '',
       role: 'USER',
       username: '',

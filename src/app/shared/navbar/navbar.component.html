@@ -3,12 +3,12 @@
   <nav class="navbar">
     <span class="logo" routerLink="/user/Dashboard"> Library</span>
     <div class="menu-container">
-      <span class="menu-item" *ngIf="!isAdmin" routerLink="/user/reservation"
+      <span class="menu-item" *ngIf="!isAdmin()" routerLink="/user/reservation"
         >Reservation</span
       >
-      <span class="menu-item-2" *ngIf="isAdmin" routerLink="/admin/edit-book-category">Books &amp; Categories</span>
+      <span class="menu-item-2" *ngIf="isAdmin()" routerLink="/admin/edit-book-category">Books &amp; Categories</span>
 
-      <span class="menu-item" *ngIf="isAdmin" routerLink="/admin/edit-users">Users</span>
+      <span class="menu-item" *ngIf="isAdmin()" routerLink="/admin/edit-users">Users</span>
       <span class="menu-item" routerLink="/user/catalog">Catalog</span>
       <span class="menu-item" routerLink="/user/account">Account</span>
     </div>

@@ -6,19 +6,18 @@
         <img src="../../../assets/back-arrow.svg" />
         <div class="back">Back</div>
       </div>
-      <h5>Hello Admin!</h5>
+      <h5>Add a book !</h5>
     </div>
-    <h4>Add a book !</h4>
     <form (ngSubmit)="onSubmit()">
       <div class="admin-dashboard">
-        <div class="col-1">
+        <div class="input-section">
           <div class="input-group">
             <label for="book-title">Title</label>
             <input
               type="text"
               id="book-title"
               [(ngModel)]="book.titre"
-              name="title" 
+              name="title"
             />
           </div>
           <div class="input-group">
@@ -27,16 +26,18 @@
               type="text"
               id="book-author"
               [(ngModel)]="book.auteur"
-              name="author" 
+              name="author"
             />
           </div>
+        </div>
+        <div class="input-section">
           <div class="input-group">
             <label for="book-publication-date">Publication Date</label>
             <input
               type="date"
               id="book-publication-date"
               [(ngModel)]="book.datePublication"
-              name="publicationDate" 
+              name="publicationDate"
             />
           </div>
           <div class="input-group">
@@ -45,19 +46,20 @@
               type="text"
               id="book-isbn"
               [(ngModel)]="book.isbn"
-              name="isbn" 
+              name="isbn"
             />
           </div>
         </div>
-        <div class="col-2">
-          <label for="book-categorie">Choose categories</label>
-          <select [(ngModel)]="selectedCategories" name="categories" multiple class=""> 
-            <option value="" disabled>Category</option>
-            <option
-              *ngFor="let category of categories"
-              [value]="category.id"
-              class="filter-option"
-            >
+        <div class="input-section">
+          <label for="book-category">Category</label>
+          <select
+            id="book-category"
+            [(ngModel)]="book.categoryId"
+            name="categoryId"
+            class="category-select"
+          >
+            <option value="" disabled selected>Select Category</option>
+            <option *ngFor="let category of categories" [value]="category.id">
               {{ category.nom }}
             </option>
           </select>

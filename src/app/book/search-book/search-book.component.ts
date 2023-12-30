@@ -13,6 +13,7 @@ export class SearchBookComponent {
   categories: Category[] = []; 
   books: Book[] = []; 
   selectedOption: string = '';
+  
   constructor(private Categorieservice: CategorieService ,private Bookservice: BookService) {}
 
   ngOnInit() {
@@ -27,6 +28,19 @@ export class SearchBookComponent {
   searchTerm: string = '';
 
   searchBooks() {
-    console.log('Searching for:', this.searchTerm);
+    if (this.selectedOption) {
+      console.log('Searching in category:', this.selectedOption);
+      this.Bookservice.getBooksByCategory(this.selectedOption).subscribe((data) => {
+        // Filter books based on the searchTerm
+        this.books = data.filter(book => 
+          book.titre.toLowerCase().includes(this.searchTerm.toLowerCase()) || 
+          book.auteur.toLowerCase().includes(this.searchTerm.toLowerCase())
+        );
+      });
+    } else {
+      console.log('No category selected');
+      // Optionally, handle the case where no category is selected
+    }
   }
+  
 }
