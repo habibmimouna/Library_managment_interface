@@ -12,6 +12,7 @@ import { AddUserComponent } from './Admin/add-user/add-user.component';
 import { AuthGuard } from './auth/auth.guard';
 import { EditBookCategoryComponent } from './Admin/edit-book-category/edit-book-category.component';
 import { EditUsersComponent } from './Admin/edit-users/edit-users.component';
+import { ReservationComponent } from './book/reservation/reservation.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'auth/login', pathMatch: 'full' },
@@ -24,7 +25,7 @@ const routes: Routes = [
   },
 
   { path: 'user/catalog', component: SearchBookComponent },
-  { path: 'user/reservation', component: BorrowBookComponent },
+  { path: 'user/reservation', component: ReservationComponent },
   { path: 'user/account', component: AccountComponent },
   {
     path: 'admin/Dashboard',

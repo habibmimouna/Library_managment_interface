@@ -12,7 +12,7 @@ import { Category } from '../categorie';
 })
 export class AddBookComponent {
   categories: Category[] = [];
-  
+
   book: Book = {
     id: null,
     titre: '',
@@ -39,20 +39,15 @@ export class AddBookComponent {
   }
 
   onSubmit() {
-   
-  
-          if (this.book.datePublication) {
-            const date = new Date(this.book.datePublication);
-            this.book.datePublication = date.toISOString().split('.')[0];
-          }
-          console.log(this.book);
-          
+    if (this.book.datePublication) {
+      const date = new Date(this.book.datePublication);
+      this.book.datePublication = date.toISOString().split('.')[0];
+    }
+    console.log(this.book);
 
-          this.createBook();
-        
-   
+    this.createBook();
   }
-  
+
   private createBook() {
     this.bookService.createBook(this.book).subscribe(
       (data) => {
@@ -64,7 +59,6 @@ export class AddBookComponent {
       }
     );
   }
-  
 
   private resetForm() {
     this.book = {
@@ -75,6 +69,5 @@ export class AddBookComponent {
       isbn: '',
       categoryId: null,
     };
-    
   }
 }

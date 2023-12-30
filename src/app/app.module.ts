@@ -20,6 +20,7 @@ import { ReservationComponent } from './book/reservation/reservation.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +37,7 @@ import { ReservationComponent } from './book/reservation/reservation.component';
     EditBookCategoryComponent,
     EditUsersComponent,
     ReservationComponent
+  
   ],
   imports: [
     BrowserModule,

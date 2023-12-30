@@ -1,9 +1,8 @@
-import { User } from "../User/user";
-import { Book } from "./book";
+
 
 export interface Reservation {
-    id: number;
+    id: number|null;
     dateReservation: Date | string; 
-    user: User; 
-    livre: Book;
+    user_id: number |null; 
+    livreId: number | null;
 }

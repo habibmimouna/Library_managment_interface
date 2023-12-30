@@ -1,13 +1,15 @@
-
 <div class="container">
-  
   <app-navbar></app-navbar>
-  
+
   <div class="book-search">
     <div class="search">
       <select [(ngModel)]="selectedOption" class="">
         <option value="" disabled selected>Categorie</option>
-        <option *ngFor="let category of categories" [value]="category.id" class="filter-option">
+        <option
+          *ngFor="let category of categories"
+          [value]="category.id"
+          class="filter-option"
+        >
           {{ category.nom }}
         </option>
       </select>
@@ -20,13 +22,32 @@
       <button (click)="searchBooks()">Search</button>
     </div>
   </div>
-  <div class="book-list"   >
+  <div class="book-list">
     <div class="item-book" *ngFor="let book of books">
-      <img>
-      <h3>{{ book.titre }}</h3>
-      <h6>{{ book.auteur }}</h6>
-      <h6>{{ book.datePublication }}</h6>
+      <div class="item-detail">
+        <img />
+        <h3>{{ book.titre }}</h3>
+        <h6>{{ book.auteur }}</h6>
+        <h6>{{ book.datePublication }}</h6>
+      </div>
+      <button class="reserve-button" *ngIf="book.id!==null" (click)="openModal(book.id)">reserve</button>
     </div>
-
+  </div>
+  <div class="modal" [class.show-modal]="showModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5>Make reservation</h5>
+        <span class="close-button" (click)="toggleModal()">&times;</span>
+      </div>
+      <div class="modal-body">
+        <label for="reservationDate">Choose date :</label>
+        <input type="date" id="reservationDate" [(ngModel)]="reservationDate" />
+        
+      </div>
+      <div class="modal-footer">
+        <button (click)="reserveBook()">Add</button>
+        <button (click)="toggleModal()">Cancel</button>
+      </div>
+    </div>
   </div>
 </div>
