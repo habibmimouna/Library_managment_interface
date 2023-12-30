@@ -3,6 +3,8 @@ import { Reservation } from '../reservation';
 import { ReservationService } from '../reservation.service';
 import { Router } from '@angular/router';
 import { User } from '../../User/user';
+import { emprunt } from '../emprunt';
+import { EmpruntService } from '../emprunt.service';
 
 @Component({
   selector: 'app-reservation',
@@ -10,11 +12,12 @@ import { User } from '../../User/user';
   styleUrl: './reservation.component.scss',
 })
 export class ReservationComponent {
-  reservation:Reservation={
-    id:null,
-    dateReservation: new Date,
-    livreId:null,
-    user_id:null,
+  emprunt:emprunt={
+    id: null,
+    dateDebut: '',
+    dateFin:'',
+    livre_id: null,
+    user_id: null,
   }
   currentUser: User={
     id: null,
@@ -28,20 +31,23 @@ export class ReservationComponent {
   }
   constructor(
     private reservationService:ReservationService,
-    private router: Router
+    private router: Router,
+    private EmpruntService :EmpruntService
   ) {}
 
   onSubmit() {
-    if (this.reservation.dateReservation) {
-      const date = new Date(this.reservation.dateReservation);
-      this.reservation.dateReservation = date.toISOString().split('.')[0];
+    if (this.emprunt.dateDebut&&this.emprunt.dateFin) {
+      const dateDeb = new Date(this.emprunt.dateDebut);
+      const dateFin = new Date(this.emprunt.dateFin);
+      this.emprunt.dateDebut = dateDeb.toISOString().split('.')[0];
+      this.emprunt.dateFin = dateFin.toISOString().split('.')[0];
     }
-    console.log(this.reservation);
+    console.log(this.emprunt);
 
     this.createBook();
   }
   private createBook() {
-    this.reservationService.createReservation(this.reservation).subscribe(
+    this.EmpruntService.createEmprunt(this.emprunt).subscribe(
       (data) => {
         console.log('Book added:', data);
         this.resetForm();
@@ -52,11 +58,12 @@ export class ReservationComponent {
     );
   }
   private resetForm() {
-    this.reservation = {
-      id:null,
-      dateReservation: '',
-      livreId:null,
-      user_id:null,
+    this.emprunt = {
+      id: null,
+    dateDebut: '',
+    dateFin:'',
+    livre_id: null,
+    user_id: null,
     };
   }
 

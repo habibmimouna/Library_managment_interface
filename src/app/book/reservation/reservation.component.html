@@ -2,47 +2,47 @@
     <app-navbar></app-navbar>
     <div class="dashboard-container">
       <div class="make-res-header">
-        <h5>Make a reservation</h5>
+        <h5>Borrow a book :</h5>
       </div>
       <form (ngSubmit)="onSubmit()">
         <div class="admin-dashboard">
           <div class="input-section">
             <div class="input-group">
-              <label for="book-title">Title</label>
+              <label for="start">From :</label>
               <input
-                type="text"
+                type="date"
                 id="book-title"
-                [(ngModel)]="reservation.id"
+                [(ngModel)]="emprunt.dateDebut"
                 name="title"
               />
             </div>
             <div class="input-group">
-              <label for="book-author">Author</label>
+              <label for="finish">To :</label>
               <input
-                type="text"
+                type="date"
                 id="book-author"
-                [(ngModel)]="reservation.livreId"
+                [(ngModel)]="emprunt.dateFin"
                 name="author"
-                [value]="currentUser.id"
+              
               />
             </div>
           </div>
           <div class="input-section">
             <div class="input-group">
-              <label for="book-publication-date">Publication Date</label>
+              <label for="book-publication-date">Book ID :</label>
               <input
-                type="date"
+                type="text"
                 id="book-publication-date"
-                [(ngModel)]="reservation.dateReservation"
+                [(ngModel)]="emprunt.livre_id"
                 name="publicationDate"
               />
             </div>
             <div class="input-group">
-              <label for="book-isbn">ISBN</label>
+              <label for="book-isbn">User ID :</label>
               <input
                 type="text"
                 id="book-isbn"
-                [(ngModel)]="reservation.user_id"
+                [(ngModel)]="emprunt.user_id"
                 name="isbn"
               />
             </div>
