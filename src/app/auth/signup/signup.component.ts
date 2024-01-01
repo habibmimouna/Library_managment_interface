@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { User } from '../../User/user';
 import { AuthService } from '../auth.service';
 import { FormsModule } from '@angular/forms';
@@ -22,13 +22,16 @@ export class SignupComponent {
     libraryCard: '',
     phone: '',
   };
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService,private router:Router) {}
 
   onSubmit() {
     this.authService.signup(this.user).subscribe(
       (data) => {
         console.log('User added:', data);
-        
+        const isConfirmed = confirm('you have sign up with success go back to login page ?');
+    if (isConfirmed) {
+        this.router.navigate(['auth/login']);
+    }
       },
       (error) => {
         console.error('Error adding user:', error);
