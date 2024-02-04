@@ -34,7 +34,7 @@ export class SearchBookComponent {
     id:null,
     dateReservation: new Date,
     livreId:null,
-    user_id:null,
+    userId:null,
 
   }
   
@@ -86,12 +86,15 @@ export class SearchBookComponent {
   }
   reserveBook() {
     this.reservation.livreId=this.selectedBookId
-    this.reservation.user_id=this.currentUser.id
+    this.reservation.userId=this.currentUser.id
+    console.log(this.reservation.userId);
+    
     console.log(this.reservation);
     
     this.ReservationService.createReservation(this.reservation).subscribe(
       (data) => {
         console.log('Reservation successful', data);
+        
         this.toggleModal();
         // Additional success handling
       },
@@ -101,5 +104,8 @@ export class SearchBookComponent {
       }
     );
   }
-  
+  getUser(userId:number){
+    let user=this.UserService.getUserById(userId)
+    return user
+  }
 }

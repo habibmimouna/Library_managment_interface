@@ -13,8 +13,8 @@ export class ReservationService {
 
 
   constructor(private httpClient: HttpClient) { }
-  getReservationList(): Observable<Category[]> {
-    return this.httpClient.get<Category[]>(`${this.baseURL}`);
+  getReservationList(): Observable<Reservation[]> {
+    return this.httpClient.get<Reservation[]>(`${this.baseURL}`);
   }
   createReservation(reservation: Reservation): Observable<Object> {
     return this.httpClient.post(`${this.baseURL}`, reservation);

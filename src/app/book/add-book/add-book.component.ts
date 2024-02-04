@@ -19,6 +19,7 @@ export class AddBookComponent {
     auteur: '',
     datePublication: '',
     isbn: '',
+    img:'',
     categoryId: null,
   };
 
@@ -37,6 +38,28 @@ export class AddBookComponent {
   backfunction() {
     this.router.navigate(['admin/edit-book-category']);
   }
+  onFileChange(event: any) {
+    const fileInput = event.target;
+    const file = fileInput.files[0];
+    const reader = new FileReader();
+  
+    reader.onloadend = () => {
+      const base64file = reader.result as string;
+      console.log(base64file);
+  
+      // You can store the base64 string in your book object or use it as needed.
+      this.book.img = base64file;
+  
+      // Reset the file input to allow selecting the same file again if needed
+      fileInput.value = ''; // This line will clear the file input value
+    };
+  
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+  }
+  
+  
 
   onSubmit() {
     if (this.book.datePublication) {
@@ -67,6 +90,7 @@ export class AddBookComponent {
       auteur: '',
       datePublication: '',
       isbn: '',
+      img:'',
       categoryId: null,
     };
   }

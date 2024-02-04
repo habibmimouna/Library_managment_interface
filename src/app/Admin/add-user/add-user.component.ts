@@ -23,7 +23,7 @@ export class AddUserComponent {
   constructor(private userService: UserService, private router: Router) {}
 
   backfunction() {
-    this.router.navigate(['admin/Dashboard']);
+    this.router.navigate(['admin/edit-users']);
   }
 
   onSubmit() {

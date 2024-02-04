@@ -1,7 +1,8 @@
 <div class="bg-image"></div>
 <div class="dashboard-container">
   <nav class="navbar">
-    <span class="logo" routerLink="/user/Dashboard"> Library</span>
+    <span class="logo" routerLink="/admin/edit-users" *ngIf="isAdmin()"> Library</span>
+    <span class="logo" routerLink="/user/catalog" *ngIf="!isAdmin()"> Library</span>
     <div class="menu-container">
       <span class="menu-item" *ngIf="!isAdmin()" routerLink="/user/reservation"
         >Emprunt</span

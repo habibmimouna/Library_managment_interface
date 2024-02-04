@@ -42,13 +42,13 @@ export class DashboardComponent {
     });
   }
 
-  onDeleteBook(id: number) { // Assuming id is a number
+  onDeleteBook(id: number) { 
     const isConfirmed = confirm('Are you sure you want to delete this book?');
     if (isConfirmed) {
       this.bookService.deleteBook(id).subscribe(
         (response) => {
           console.log('Book deleted successfully', response);
-          this.fetchData(); // Fetch updated data
+          this.fetchData(); 
         },
         (error) => {
           console.error('Error deleting book', error);

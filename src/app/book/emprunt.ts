@@ -5,6 +5,6 @@ export interface emprunt {
     id: number |null;
     dateDebut: Date |string;
     dateFin:Date |string; 
-    livre_id: number|null;
-    user_id: number|null;
+    livreId: number|null;
+    userId: number|null;
 }

@@ -3,6 +3,6 @@
 export interface Reservation {
     id: number|null;
     dateReservation: Date | string; 
-    user_id: number |null; 
+    userId: number |null; 
     livreId: number | null;
 }

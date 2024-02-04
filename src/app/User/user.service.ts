@@ -8,6 +8,8 @@ import { User } from './user';
 })
 export class UserService {
   private baseURL = 'http://localhost:8081/api/v1/user';
+  private authBaseURL = 'http://localhost:8081/api/v1/auth/signup';
+
   private readonly USER_KEY = 'currentUser';
 
   constructor(private httpClient: HttpClient) {}
@@ -17,7 +19,7 @@ export class UserService {
   }
 
   createUser(user: User): Observable<Object> {
-    return this.httpClient.post(`${this.baseURL}`, user);
+    return this.httpClient.post(`${this.authBaseURL}`, user);
   }
 
   deleteUser(id: number): Observable<Object> {

@@ -19,6 +19,7 @@ export class EditBookCategoryComponent {
   showEditModal: boolean = false;
   editingCategory: Category | null = null;
   newCategoryName: string = '';
+  
 
   constructor(
     private bookService: BookService,
@@ -40,6 +41,7 @@ export class EditBookCategoryComponent {
     this.userService.getUsersList().subscribe((data) => {
       this.users = data;
     });
+    
   }
 
   onDeleteBook(id: number) {
@@ -60,6 +62,7 @@ export class EditBookCategoryComponent {
       this.reloadPage();
     }
   }
+  
   onDeleteCategory(id: number) {
     const isConfirmed = confirm(
       'Are you sure you want to delete this category?'
@@ -86,6 +89,7 @@ export class EditBookCategoryComponent {
     this.editingCategory = category;
     this.showEditModal = !this.showEditModal;
   }
+
 
   addCategory() {
     if (this.newCategoryName) {
@@ -119,6 +123,14 @@ export class EditBookCategoryComponent {
         }
       );
     }
+  }
+  getCategory(categoryID:number){
+    this.categoryService.getCategoryById(categoryID).subscribe((data) => {
+      let categoryname = data.nom;
+      return categoryname
+    });
+    
+    
   }
 
   get editingCategoryName(): string {

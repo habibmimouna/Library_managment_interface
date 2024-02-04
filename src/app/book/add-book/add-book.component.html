@@ -51,18 +51,31 @@
           </div>
         </div>
         <div class="input-section">
-          <label for="book-category">Category</label>
-          <select
-            id="book-category"
-            [(ngModel)]="book.categoryId"
-            name="categoryId"
-            class="category-select"
-          >
-            <option value="" disabled selected>Select Category</option>
-            <option *ngFor="let category of categories" [value]="category.id">
-              {{ category.nom }}
-            </option>
-          </select>
+          <div>
+            <label for="book-category">Category</label>
+            <select
+              id="book-category"
+              [(ngModel)]="book.categoryId"
+              name="categoryId"
+              class="category-select"
+            >
+              <option value="" disabled selected>Select Category</option>
+              <option *ngFor="let category of categories" [value]="category.id">
+                {{ category.nom }}
+              </option>
+            </select>
+          </div>
+          <div class="input-img">
+            <label for="book-img">Image</label>
+            <input
+              type="file"
+              id="book-img"
+              [(ngModel)]="book.img"
+              name="img"
+              accept="image/png, image/jpeg" 
+              (change)="onFileChange($event)"
+            />
+          </div>
         </div>
       </div>
       <div class="submit-button-container">

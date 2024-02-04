@@ -22,7 +22,20 @@
     border-radius: 4px;
     overflow-y: auto; /* Allows scrolling for multiple options */
 }
-
+.input-img{
+    margin-bottom: 5px;
+}
+.input-img label{
+    margin-bottom: 2px;
+    width: 40vh;
+}
+.input-img input{
+    width: 40vh;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    height: 10vh;
+}
 .input-group {
     margin-bottom: 5px;
 }

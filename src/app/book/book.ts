@@ -8,6 +8,7 @@ export interface Book{
     auteur:string;
     datePublication:string;
     isbn:string;
+    img:string;
     categoryId: number | null;
     reservations?: Reservation[];
     

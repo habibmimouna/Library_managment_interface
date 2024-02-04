@@ -37,9 +37,9 @@ export class LoginComponent {
             if (user.role === 'ADMIN' ){ // Replace 'admin' with the actual value for admin role
               
               
-              this.router.navigate(['admin/Dashboard']);
+              this.router.navigate(['admin/edit-users']);
             } else {
-              this.router.navigate(['user/Dashboard']);
+              this.router.navigate(['user/catalog']);
             }
           }
         });

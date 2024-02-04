@@ -16,8 +16,8 @@ export class ReservationComponent {
     id: null,
     dateDebut: '',
     dateFin:'',
-    livre_id: null,
-    user_id: null,
+    livreId: null,
+    userId: null,
   }
   currentUser: User={
     id: null,
@@ -62,8 +62,8 @@ export class ReservationComponent {
       id: null,
     dateDebut: '',
     dateFin:'',
-    livre_id: null,
-    user_id: null,
+    livreId: null,
+    userId: null,
     };
   }
 

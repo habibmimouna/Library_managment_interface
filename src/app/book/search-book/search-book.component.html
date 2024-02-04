@@ -26,9 +26,13 @@
     <div class="item-book" *ngFor="let book of books">
       <div class="item-detail">
         <img />
-        <h3>{{ book.titre }}</h3>
-        <h6>{{ book.auteur }}</h6>
-        <h6>{{ book.datePublication }}</h6>
+        <div>
+        <h5>Title:</h5>
+        <h4>{{ book.titre }}</h4>
+      </div>
+        <h6>Author: {{ book.auteur }}</h6>
+        <h6>Id: {{book.id}}</h6>
+        
       </div>
       <button class="reserve-button" *ngIf="book.id!==null" (click)="openModal(book.id)">reserve</button>
     </div>
